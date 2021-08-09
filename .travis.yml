@@ -12,7 +12,7 @@ install:
 script:
   - bash script/codecov.sh
   - go vet $(go list ./... | grep -v /examples/)
-  - golint --set_exit_status ./...
+#  - golint --set_exit_status ./...
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
