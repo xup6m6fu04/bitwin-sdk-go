@@ -9,10 +9,10 @@ import (
 )
 
 func TestNewBuildRelationUserService(t *testing.T) {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewBuildRelationUserService(merchantId, signKey)
-	assert.Equal(t, merchantId, srv.Request.MerchantId)
+	srv := NewBuildRelationUserService(merchantID, signKey)
+	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
 }
 
@@ -22,18 +22,18 @@ func TestSetIsProdEnvironmentInBuildRelationUserService(t *testing.T) {
 	assert.Equal(t, true, srv.IsProdEnvironment)
 }
 
-func TestSetMerchantUserIdInBuildRelationUserService(t *testing.T) {
+func TestSetMerchantUserIDInBuildRelationUserService(t *testing.T) {
 	srv := dummyBuildRelationUserService()
-	var merchantUserId = "dummyMerchantUserId"
-	srv.SetMerchantUserId(merchantUserId)
-	assert.Equal(t, merchantUserId, srv.Request.MerchantUserId)
+	var merchantUserID = "dummyMerchantUserID"
+	srv.SetMerchantUserID(merchantUserID)
+	assert.Equal(t, merchantUserID, srv.Request.MerchantUserID)
 }
 
-func TestSetCallBackUrlInBuildRelationUserService(t *testing.T) {
+func TestSetCallBackURLInBuildRelationUserService(t *testing.T) {
 	srv := dummyBuildRelationUserService()
-	var callBackUrl = "dummyCallBackUrl"
-	srv.SetCallBackUrl(callBackUrl)
-	assert.Equal(t, callBackUrl, srv.Request.CallBackUrl)
+	var callBackURL = "dummyCallBackURL"
+	srv.SetCallBackURL(callBackURL)
+	assert.Equal(t, callBackURL, srv.Request.CallBackURL)
 }
 
 func TestSetTimeStampInBuildRelationUserService(t *testing.T) {
@@ -46,12 +46,12 @@ func TestSetTimeStampInBuildRelationUserService(t *testing.T) {
 func TestExecuteInBuildRelationUserService(t *testing.T) {
 	srv := dummyBuildRelationUserService()
 	srv.SetIsProdEnvironment(false)
-	srv.SetMerchantUserId("YOZERO_USER_000001")
-	srv.SetCallBackUrl("https://attendance.hearts.tw/api/bitwin-withdraw-callback")
+	srv.SetMerchantUserID("YOZERO_USER_000001")
+	srv.SetCallBackURL("https://attendance.hearts.tw/api/bitwin-withdraw-callback")
 	srv.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
 	rst, err := srv.Execute()
 	if err != nil {
-		t.Skip("Maybe, merchantId & signKey is Fake")
+		t.Skip("Maybe, merchantID & signKey is Fake")
 	}
 
 	if reflect.TypeOf(rst).String() != "*api.BuildRelationUserResponse" {
@@ -60,7 +60,7 @@ func TestExecuteInBuildRelationUserService(t *testing.T) {
 }
 
 func dummyBuildRelationUserService() *BuildRelationUserService {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewBuildRelationUserService(merchantId, signKey)
+	return NewBuildRelationUserService(merchantID, signKey)
 }

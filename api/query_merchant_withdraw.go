@@ -2,20 +2,23 @@ package api
 
 import "encoding/json"
 
+// QueryMerchantWithdrawService type
 type QueryMerchantWithdrawService struct {
 	IsProdEnvironment bool
 	SignKey           string
 	Request           QueryMerchantWithdrawRequest
 }
 
+// QueryMerchantWithdrawRequest type
 type QueryMerchantWithdrawRequest struct {
-	MerchantId         string `json:"MerchantId"`
-	WithdrawId         string `json:"WithdrawId,omitempty"`
-	MerchantWithdrawId string `json:"MerchantWithdrawId"`
+	MerchantID         string `json:"MerchantId"`
+	WithdrawID         string `json:"WithdrawId,omitempty"`
+	MerchantWithdrawID string `json:"MerchantWithdrawId"`
 	TimeStamp          string `json:"TimeStamp"`
 	Sign               string `json:"Sign"`
 }
 
+// QueryMerchantWithdrawResponse type
 type QueryMerchantWithdrawResponse struct {
 	MerchantUserID     string `json:"MerchantUserId,omitempty"`
 	UserWallet         string `json:"UserWallet,omitempty"`
@@ -33,45 +36,52 @@ type QueryMerchantWithdrawResponse struct {
 	Sign               string `json:"Sign"`
 }
 
-func NewQueryMerchantWithdrawService(merchantId string, signKey string) *QueryMerchantWithdrawService {
+// NewQueryMerchantWithdrawService returns a new service for the given merchant ID and sign key
+func NewQueryMerchantWithdrawService(merchantID string, signKey string) *QueryMerchantWithdrawService {
 	return &QueryMerchantWithdrawService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
 		Request: QueryMerchantWithdrawRequest{
-			MerchantId:         merchantId,
-			WithdrawId:         "",
-			MerchantWithdrawId: "",
+			MerchantID:         merchantID,
+			WithdrawID:         "",
+			MerchantWithdrawID: "",
 			TimeStamp:          "",
 			Sign:               "",
 		},
 	}
 }
 
+// SetIsProdEnvironment sets the environment (test or prod)
 func (srv *QueryMerchantWithdrawService) SetIsProdEnvironment(IsProdEnvironment bool) *QueryMerchantWithdrawService {
 	srv.IsProdEnvironment = IsProdEnvironment
 	return srv
 }
 
-func (srv *QueryMerchantWithdrawService) SetWithdrawId(withdrawId string) *QueryMerchantWithdrawService {
-	srv.Request.WithdrawId = withdrawId
+// SetWithdrawID sets WithdrawID
+func (srv *QueryMerchantWithdrawService) SetWithdrawID(withdrawID string) *QueryMerchantWithdrawService {
+	srv.Request.WithdrawID = withdrawID
 	return srv
 }
 
-func (srv *QueryMerchantWithdrawService) SetMerchantWithdrawId(merchantWithdrawId string) *QueryMerchantWithdrawService {
-	srv.Request.MerchantWithdrawId = merchantWithdrawId
+// SetMerchantWithdrawID sets MerchantWithdrawID
+func (srv *QueryMerchantWithdrawService) SetMerchantWithdrawID(merchantWithdrawID string) *QueryMerchantWithdrawService {
+	srv.Request.MerchantWithdrawID = merchantWithdrawID
 	return srv
 }
 
+// SetTimeStamp sets Timestamp
 func (srv *QueryMerchantWithdrawService) SetTimeStamp(timeStamp string) *QueryMerchantWithdrawService {
 	srv.Request.TimeStamp = timeStamp
 	return srv
 }
 
+// setSign sets sign key
 func (srv *QueryMerchantWithdrawService) setSign(sign string) *QueryMerchantWithdrawService {
 	srv.Request.Sign = sign
 	return srv
 }
 
+// Execute build and send request(*QueryMerchantWithdrawService) return *QueryMerchantWithdrawResponse
 func (srv *QueryMerchantWithdrawService) Execute() (*QueryMerchantWithdrawResponse, error) {
 
 	url := "QueryMerchantWithdraw"

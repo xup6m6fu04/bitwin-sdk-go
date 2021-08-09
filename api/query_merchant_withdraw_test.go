@@ -9,10 +9,10 @@ import (
 )
 
 func TestNewQueryMerchantWithdrawService(t *testing.T) {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewQueryMerchantWithdrawService(merchantId, signKey)
-	assert.Equal(t, merchantId, srv.Request.MerchantId)
+	srv := NewQueryMerchantWithdrawService(merchantID, signKey)
+	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
 }
 
@@ -22,18 +22,18 @@ func TestSetIsProdEnvironmentInQueryMerchantWithdrawService(t *testing.T) {
 	assert.Equal(t, true, srv.IsProdEnvironment)
 }
 
-func TestSetWithdrawIdInQueryMerchantWithdrawService(t *testing.T) {
+func TestSetWithdrawIDInQueryMerchantWithdrawService(t *testing.T) {
 	srv := dummyQueryMerchantWithdrawService()
-	var withdrawId = "dummyWithdrawId"
-	srv.SetWithdrawId(withdrawId)
-	assert.Equal(t, withdrawId, srv.Request.WithdrawId)
+	var withdrawID = "dummyWithdrawID"
+	srv.SetWithdrawID(withdrawID)
+	assert.Equal(t, withdrawID, srv.Request.WithdrawID)
 }
 
-func TestSetMerchantWithdrawIdInQueryMerchantWithdrawService(t *testing.T) {
+func TestSetMerchantWithdrawIDInQueryMerchantWithdrawService(t *testing.T) {
 	srv := dummyQueryMerchantWithdrawService()
-	var merchantWithdrawId = "dummyMerchantWithdrawId"
-	srv.SetMerchantWithdrawId(merchantWithdrawId)
-	assert.Equal(t, merchantWithdrawId, srv.Request.MerchantWithdrawId)
+	var merchantWithdrawID = "dummyMerchantWithdrawID"
+	srv.SetMerchantWithdrawID(merchantWithdrawID)
+	assert.Equal(t, merchantWithdrawID, srv.Request.MerchantWithdrawID)
 }
 
 func TestSetTimeStampInQueryMerchantWithdrawService(t *testing.T) {
@@ -45,12 +45,12 @@ func TestSetTimeStampInQueryMerchantWithdrawService(t *testing.T) {
 
 func TestExecuteInQueryMerchantWithdrawService(t *testing.T) {
 	srv := dummyQueryMerchantWithdrawService()
-	srv.SetWithdrawId("53116499398961504")
-	srv.SetMerchantWithdrawId("YOZERO_WITHDRAW_000003")
+	srv.SetWithdrawID("53116499398961504")
+	srv.SetMerchantWithdrawID("YOZERO_WITHDRAW_000003")
 	srv.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
 	rst, err := srv.Execute()
 	if err != nil {
-		t.Skip("Maybe, merchantId & signKey is Fake")
+		t.Skip("Maybe, merchantID & signKey is Fake")
 	}
 
 	if reflect.TypeOf(rst).String() != "*api.QueryMerchantWithdrawResponse" {
@@ -59,7 +59,7 @@ func TestExecuteInQueryMerchantWithdrawService(t *testing.T) {
 }
 
 func dummyQueryMerchantWithdrawService() *QueryMerchantWithdrawService {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewQueryMerchantWithdrawService(merchantId, signKey)
+	return NewQueryMerchantWithdrawService(merchantID, signKey)
 }

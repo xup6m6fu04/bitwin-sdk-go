@@ -9,10 +9,10 @@ import (
 )
 
 func TestNewCreateCryptoPayOrderService(t *testing.T) {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewCreateCryptoPayOrderService(merchantId, signKey)
-	assert.Equal(t, merchantId, srv.Request.MerchantId)
+	srv := NewCreateCryptoPayOrderService(merchantID, signKey)
+	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
 }
 
@@ -22,18 +22,18 @@ func TestSetIsProdEnvironmentInCreateCryptoPayOrderService(t *testing.T) {
 	assert.Equal(t, true, srv.IsProdEnvironment)
 }
 
-func TestSetMerchantUserIdInCreateCryptoPayOrderService(t *testing.T) {
+func TestSetMerchantUserIDInCreateCryptoPayOrderService(t *testing.T) {
 	srv := dummyCreateCryptoPayOrderService()
-	var merchantUserId = "dummyMerchantUserId"
-	srv.SetMerchantUserId(merchantUserId)
-	assert.Equal(t, merchantUserId, srv.Request.MerchantUserId)
+	var merchantUserID = "dummyMerchantUserID"
+	srv.SetMerchantUserID(merchantUserID)
+	assert.Equal(t, merchantUserID, srv.Request.MerchantUserID)
 }
 
-func TestSetMerchantOrderIdInCreateCryptoPayOrderService(t *testing.T) {
+func TestSetMerchantOrderIDInCreateCryptoPayOrderService(t *testing.T) {
 	srv := dummyCreateCryptoPayOrderService()
-	var merchantOrderId = "dummyMerchantOrderId"
-	srv.SetMerchantOrderId(merchantOrderId)
-	assert.Equal(t, merchantOrderId, srv.Request.MerchantOrderId)
+	var merchantOrderID = "dummyMerchantOrderID"
+	srv.SetMerchantOrderID(merchantOrderID)
+	assert.Equal(t, merchantOrderID, srv.Request.MerchantOrderID)
 }
 
 func TestSetOrderDescriptionInCreateCryptoPayOrderService(t *testing.T) {
@@ -64,11 +64,11 @@ func TestSetSymbolInCreateCryptoPayOrderService(t *testing.T) {
 	assert.Equal(t, symbol, srv.Request.Symbol)
 }
 
-func TestSetCallBackUrlInCreateCryptoPayOrderService(t *testing.T) {
+func TestSetCallBackURLInCreateCryptoPayOrderService(t *testing.T) {
 	srv := dummyCreateCryptoPayOrderService()
-	var callBackUrl = "dummyCallBackUrl"
-	srv.SetCallBackUrl(callBackUrl)
-	assert.Equal(t, callBackUrl, srv.Request.CallBackUrl)
+	var callBackURL = "dummyCallBackURL"
+	srv.SetCallBackURL(callBackURL)
+	assert.Equal(t, callBackURL, srv.Request.CallBackURL)
 }
 
 func TestSetTimeStampInCreateCryptoPayOrderService(t *testing.T) {
@@ -80,13 +80,13 @@ func TestSetTimeStampInCreateCryptoPayOrderService(t *testing.T) {
 
 func TestExecuteInCreateCryptoPayOrderService(t *testing.T) {
 	srv := dummyCreateCryptoPayOrderService()
-	srv.SetMerchantUserId("YOZERO_USER_000001")
-	srv.SetMerchantOrderId("YOZERO_ORDER_TEST_000001")
+	srv.SetMerchantUserID("YOZERO_USER_000001")
+	srv.SetMerchantOrderID("YOZERO_ORDER_TEST_000001")
 	srv.SetOrderDescription("YOZERO_DESC_TEST_000001")
 	srv.SetAmount("70000000000")
 	srv.SetMerchantRMB("4500.35")
 	srv.SetSymbol("USDT_ERC20")
-	srv.SetCallBackUrl("https://attendance.hearts.tw/api/bitwin-payment-callback")
+	srv.SetCallBackURL("https://attendance.hearts.tw/api/bitwin-payment-callback")
 	srv.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
 	rst, err := srv.Execute()
 	if err != nil {
@@ -99,7 +99,7 @@ func TestExecuteInCreateCryptoPayOrderService(t *testing.T) {
 }
 
 func dummyCreateCryptoPayOrderService() *CreateCryptoPayOrderService {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewCreateCryptoPayOrderService(merchantId, signKey)
+	return NewCreateCryptoPayOrderService(merchantID, signKey)
 }

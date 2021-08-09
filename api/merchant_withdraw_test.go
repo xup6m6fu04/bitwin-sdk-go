@@ -9,10 +9,10 @@ import (
 )
 
 func TestNewMerchantWithdrawService(t *testing.T) {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewMerchantWithdrawService(merchantId, signKey)
-	assert.Equal(t, merchantId, srv.Request.MerchantId)
+	srv := NewMerchantWithdrawService(merchantID, signKey)
+	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
 }
 
@@ -22,11 +22,11 @@ func TestSetIsProdEnvironmentInMerchantWithdrawService(t *testing.T) {
 	assert.Equal(t, true, srv.IsProdEnvironment)
 }
 
-func TestSetMerchantWithdrawIdInMerchantWithdrawService(t *testing.T) {
+func TestSetMerchantWithdrawIDInMerchantWithdrawService(t *testing.T) {
 	srv := dummyMerchantWithdrawService()
-	var merchantWithdrawId = "dummyMerchantWithdrawId"
-	srv.SetMerchantWithdrawId(merchantWithdrawId)
-	assert.Equal(t, merchantWithdrawId, srv.Request.MerchantWithdrawId)
+	var merchantWithdrawID = "dummyMerchantWithdrawID"
+	srv.SetMerchantWithdrawID(merchantWithdrawID)
+	assert.Equal(t, merchantWithdrawID, srv.Request.MerchantWithdrawID)
 }
 
 func TestSetUserWalletInMerchantWithdrawService(t *testing.T) {
@@ -57,11 +57,11 @@ func TestSetSymbolInMerchantWithdrawService(t *testing.T) {
 	assert.Equal(t, symbol, srv.Request.Symbol)
 }
 
-func TestSetCallBackUrlInMerchantWithdrawService(t *testing.T) {
+func TestSetCallBackURLInMerchantWithdrawService(t *testing.T) {
 	srv := dummyMerchantWithdrawService()
-	var callBackUrl = "dummyCallBackUrl"
-	srv.SetCallBackUrl(callBackUrl)
-	assert.Equal(t, callBackUrl, srv.Request.CallBackUrl)
+	var callBackURL = "dummyCallBackURL"
+	srv.SetCallBackURL(callBackURL)
+	assert.Equal(t, callBackURL, srv.Request.CallBackURL)
 }
 
 func TestSetTimeStampInMerchantWithdrawService(t *testing.T) {
@@ -73,13 +73,13 @@ func TestSetTimeStampInMerchantWithdrawService(t *testing.T) {
 
 func TestExecuteInMerchantWithdrawService(t *testing.T) {
 	srv := dummyMerchantWithdrawService()
-	srv.SetMerchantUserId("YOZERO_USER_000001")
-	srv.SetMerchantWithdrawId("YOZERO_WITHDRAW_000003")
+	srv.SetMerchantUserID("YOZERO_USER_000001")
+	srv.SetMerchantWithdrawID("YOZERO_WITHDRAW_000003")
 	srv.SetUserWallet("0x875EDa094F03Ed4c93adb3dbb77913F860dC888f")
 	srv.SetAmount("1000000000")
 	srv.SetMerchantRMB("66.28")
 	srv.SetSymbol("USDT_ERC20")
-	srv.SetCallBackUrl("https://attendance.hearts.tw/api/bitwin-withdraw-callback")
+	srv.SetCallBackURL("https://attendance.hearts.tw/api/bitwin-withdraw-callback")
 	srv.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
 	rst, err := srv.Execute()
 	if err != nil {
@@ -92,7 +92,7 @@ func TestExecuteInMerchantWithdrawService(t *testing.T) {
 }
 
 func dummyMerchantWithdrawService() *MerchantWithdrawService {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewMerchantWithdrawService(merchantId, signKey)
+	return NewMerchantWithdrawService(merchantID, signKey)
 }

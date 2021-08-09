@@ -2,25 +2,28 @@ package api
 
 import "encoding/json"
 
+// MerchantWithdrawService type
 type MerchantWithdrawService struct {
 	IsProdEnvironment bool
 	SignKey           string
 	Request           MerchantWithdrawRequest
 }
 
+// MerchantWithdrawRequest type
 type MerchantWithdrawRequest struct {
-	MerchantId         string `json:"MerchantId"`
-	MerchantUserId     string `json:"MerchantUserId,omitempty"`
-	MerchantWithdrawId string `json:"MerchantWithdrawId"`
+	MerchantID         string `json:"MerchantId"`
+	MerchantUserID     string `json:"MerchantUserId,omitempty"`
+	MerchantWithdrawID string `json:"MerchantWithdrawId"`
 	UserWallet         string `json:"UserWallet"`
 	Symbol             string `json:"Symbol"`
 	Amount             string `json:"Amount"`
 	MerchantRMB        string `json:"MerchantRMB,omitempty"`
-	CallBackUrl        string `json:"CallBackUrl"`
+	CallBackURL        string `json:"CallBackUrl"`
 	TimeStamp          string `json:"TimeStamp"`
 	Sign               string `json:"Sign"`
 }
 
+// MerchantWithdrawResponse type
 type MerchantWithdrawResponse struct {
 	WithdrawID         string `json:"WithdrawId,omitempty"`
 	MerchantWithdrawID string `json:"MerchantWithdrawId,omitempty"`
@@ -29,75 +32,87 @@ type MerchantWithdrawResponse struct {
 	Sign               string `json:"Sign"`
 }
 
-func NewMerchantWithdrawService(merchantId string, signKey string) *MerchantWithdrawService {
+// NewMerchantWithdrawService returns a new service for the given merchant ID and sign key
+func NewMerchantWithdrawService(merchantID string, signKey string) *MerchantWithdrawService {
 	return &MerchantWithdrawService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
 		Request: MerchantWithdrawRequest{
-			MerchantId:         merchantId,
-			MerchantUserId:     "",
-			MerchantWithdrawId: "",
+			MerchantID:         merchantID,
+			MerchantUserID:     "",
+			MerchantWithdrawID: "",
 			UserWallet:         "",
 			Symbol:             "",
 			Amount:             "",
 			MerchantRMB:        "",
-			CallBackUrl:        "",
+			CallBackURL:        "",
 			TimeStamp:          "",
 			Sign:               "",
 		},
 	}
 }
 
+// SetIsProdEnvironment sets the environment (test or prod)
 func (srv *MerchantWithdrawService) SetIsProdEnvironment(IsProdEnvironment bool) *MerchantWithdrawService {
 	srv.IsProdEnvironment = IsProdEnvironment
 	return srv
 }
 
-func (srv *MerchantWithdrawService) SetMerchantUserId(merchantUserId string) *MerchantWithdrawService {
-	srv.Request.MerchantUserId = merchantUserId
+// SetMerchantUserID sets MerchantUserID
+func (srv *MerchantWithdrawService) SetMerchantUserID(merchantUserID string) *MerchantWithdrawService {
+	srv.Request.MerchantUserID = merchantUserID
 	return srv
 }
 
-func (srv *MerchantWithdrawService) SetMerchantWithdrawId(merchantWithdrawId string) *MerchantWithdrawService {
-	srv.Request.MerchantWithdrawId = merchantWithdrawId
+// SetMerchantWithdrawID sets MerchantWithdrawID
+func (srv *MerchantWithdrawService) SetMerchantWithdrawID(merchantWithdrawID string) *MerchantWithdrawService {
+	srv.Request.MerchantWithdrawID = merchantWithdrawID
 	return srv
 }
 
+// SetUserWallet sets UserWallet
 func (srv *MerchantWithdrawService) SetUserWallet(userWallet string) *MerchantWithdrawService {
 	srv.Request.UserWallet = userWallet
 	return srv
 }
 
+// SetAmount sets Amount
 func (srv *MerchantWithdrawService) SetAmount(amount string) *MerchantWithdrawService {
 	srv.Request.Amount = amount
 	return srv
 }
 
+// SetMerchantRMB sets MerchantRMB
 func (srv *MerchantWithdrawService) SetMerchantRMB(merchantRMB string) *MerchantWithdrawService {
 	srv.Request.MerchantRMB = merchantRMB
 	return srv
 }
 
+// SetSymbol sets Symbol
 func (srv *MerchantWithdrawService) SetSymbol(symbol string) *MerchantWithdrawService {
 	srv.Request.Symbol = symbol
 	return srv
 }
 
-func (srv *MerchantWithdrawService) SetCallBackUrl(callBackUrl string) *MerchantWithdrawService {
-	srv.Request.CallBackUrl = callBackUrl
+// SetCallBackURL sets CallBackURL
+func (srv *MerchantWithdrawService) SetCallBackURL(callBackURL string) *MerchantWithdrawService {
+	srv.Request.CallBackURL = callBackURL
 	return srv
 }
 
+// SetTimeStamp sets Timestamp
 func (srv *MerchantWithdrawService) SetTimeStamp(timeStamp string) *MerchantWithdrawService {
 	srv.Request.TimeStamp = timeStamp
 	return srv
 }
 
+// setSign sets sign key
 func (srv *MerchantWithdrawService) setSign(sign string) *MerchantWithdrawService {
 	srv.Request.Sign = sign
 	return srv
 }
 
+// Execute build and send request(*MerchantWithdrawService) return *MerchantWithdrawResponse
 func (srv *MerchantWithdrawService) Execute() (*MerchantWithdrawResponse, error) {
 
 	url := "MerchantWithdraw"

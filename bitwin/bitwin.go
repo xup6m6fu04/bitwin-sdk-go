@@ -2,8 +2,9 @@ package bitwin
 
 import "github.com/xup6m6fu04/bitwin-sdk-go/v3/api"
 
+// Client for BITWIN services
 type Client struct {
-	MerchantId string
+	MerchantID string
 	SignKey    string
 
 	// Services
@@ -15,18 +16,19 @@ type Client struct {
 	BuildRelationUser     *api.BuildRelationUserService
 }
 
-func New(merchantId, signKey string) *Client {
+// New creates client
+func New(merchantID, signKey string) *Client {
 	c := &Client{
-		MerchantId: merchantId,
+		MerchantID: merchantID,
 		SignKey:    signKey,
 	}
 
-	c.CreateCryptoPayOrder = api.NewCreateCryptoPayOrderService(merchantId, signKey)
-	c.QueryCryptoPayOrder = api.NewQueryCryptoPayOrderService(merchantId, signKey)
-	c.MerchantWithdraw = api.NewMerchantWithdrawService(merchantId, signKey)
-	c.QueryMerchantWithdraw = api.NewQueryMerchantWithdrawService(merchantId, signKey)
+	c.CreateCryptoPayOrder = api.NewCreateCryptoPayOrderService(merchantID, signKey)
+	c.QueryCryptoPayOrder = api.NewQueryCryptoPayOrderService(merchantID, signKey)
+	c.MerchantWithdraw = api.NewMerchantWithdrawService(merchantID, signKey)
+	c.QueryMerchantWithdraw = api.NewQueryMerchantWithdrawService(merchantID, signKey)
 	c.ExchangeRate = api.NewExchangeRateService()
-	c.BuildRelationUser = api.NewBuildRelationUserService(merchantId, signKey)
+	c.BuildRelationUser = api.NewBuildRelationUserService(merchantID, signKey)
 
 	return c
 }

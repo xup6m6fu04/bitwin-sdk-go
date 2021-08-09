@@ -14,11 +14,13 @@ import (
 	"strings"
 )
 
+// Environment URL
 const (
 	TestAPIBaseURL = "https://stage-api.bitwin.ai/api/v3"
 	ProdAPIBaseURL = "https://api.bitwin.ai/api/v3"
 )
 
+// Call server method
 func callServer(request interface{}, IsProdEnvironment bool, url string) ([]byte, error) {
 	data, err := json.Marshal(request)
 	if err != nil {
@@ -46,6 +48,7 @@ func callServer(request interface{}, IsProdEnvironment bool, url string) ([]byte
 	return body, nil
 }
 
+// Get sign key
 func getSign(data interface{}, appSecret string) string {
 	switch v := reflect.ValueOf(data); v.Kind() {
 	case reflect.String:
@@ -67,6 +70,7 @@ func getSign(data interface{}, appSecret string) string {
 	}
 }
 
+// structToMapSing method for "getSign"
 func structToMapSing(content interface{}, appSecret string) (returnStr string) {
 	t := reflect.TypeOf(content)
 	v := reflect.ValueOf(content)
@@ -74,6 +78,7 @@ func structToMapSing(content interface{}, appSecret string) (returnStr string) {
 	return returnStr
 }
 
+// buildOrderStr method for "getSign"
 func buildOrderStr(t reflect.Type, v reflect.Value, appSecret string) (returnStr string) {
 	keys := make([]string, 0, t.NumField())
 	var data = make(map[string]interface{})
@@ -118,6 +123,7 @@ func buildOrderStr(t reflect.Type, v reflect.Value, appSecret string) (returnStr
 	return buf.String()
 }
 
+// getMd5String method for "getSign"
 func getMd5String(s string) string {
 	h := md5.New()
 	h.Write([]byte(s))

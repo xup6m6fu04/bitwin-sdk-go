@@ -4,20 +4,23 @@ import (
 	"encoding/json"
 )
 
+// QueryCryptoPayOrderService type
 type QueryCryptoPayOrderService struct {
 	IsProdEnvironment bool
 	SignKey           string
 	Request           QueryCryptoPayOrderRequest
 }
 
+// QueryCryptoPayOrderRequest type
 type QueryCryptoPayOrderRequest struct {
-	MerchantId      string `json:"MerchantId"`
-	MerchantOrderId string `json:"MerchantOrderId,omitempty"`
-	OrderId         string `json:"OrderId,omitempty"`
+	MerchantID      string `json:"MerchantId"`
+	MerchantOrderID string `json:"MerchantOrderId,omitempty"`
+	OrderID         string `json:"OrderId,omitempty"`
 	TimeStamp       string `json:"TimeStamp"`
 	Sign            string `json:"Sign"`
 }
 
+// QueryCryptoPayOrderResponse type
 type QueryCryptoPayOrderResponse struct {
 	OrderID          string `json:"OrderId,omitempty"`
 	MerchantOrderID  string `json:"MerchantOrderId,omitempty"`
@@ -35,45 +38,52 @@ type QueryCryptoPayOrderResponse struct {
 	Sign             string `json:"Sign"`
 }
 
-func NewQueryCryptoPayOrderService(merchantId string, signKey string) *QueryCryptoPayOrderService {
+// NewQueryCryptoPayOrderService returns a new service for the given merchant ID and sign key
+func NewQueryCryptoPayOrderService(merchantID string, signKey string) *QueryCryptoPayOrderService {
 	return &QueryCryptoPayOrderService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
 		Request: QueryCryptoPayOrderRequest{
-			MerchantId:      merchantId,
-			MerchantOrderId: "",
-			OrderId:         "",
+			MerchantID:      merchantID,
+			MerchantOrderID: "",
+			OrderID:         "",
 			TimeStamp:       "",
 			Sign:            "",
 		},
 	}
 }
 
+// SetIsProdEnvironment sets the environment (test or prod)
 func (srv *QueryCryptoPayOrderService) SetIsProdEnvironment(IsProdEnvironment bool) *QueryCryptoPayOrderService {
 	srv.IsProdEnvironment = IsProdEnvironment
 	return srv
 }
 
-func (srv *QueryCryptoPayOrderService) SetMerchantOrderId(merchantOrderId string) *QueryCryptoPayOrderService {
-	srv.Request.MerchantOrderId = merchantOrderId
+// SetMerchantOrderID sets MerchantOrderID
+func (srv *QueryCryptoPayOrderService) SetMerchantOrderID(merchantOrderID string) *QueryCryptoPayOrderService {
+	srv.Request.MerchantOrderID = merchantOrderID
 	return srv
 }
 
-func (srv *QueryCryptoPayOrderService) SetOrderId(orderId string) *QueryCryptoPayOrderService {
-	srv.Request.OrderId = orderId
+// SetOrderID sets OrderID
+func (srv *QueryCryptoPayOrderService) SetOrderID(orderID string) *QueryCryptoPayOrderService {
+	srv.Request.OrderID = orderID
 	return srv
 }
 
+// SetTimeStamp sets Timestamp
 func (srv *QueryCryptoPayOrderService) SetTimeStamp(timeStamp string) *QueryCryptoPayOrderService {
 	srv.Request.TimeStamp = timeStamp
 	return srv
 }
 
+// setSign sets sign key
 func (srv *QueryCryptoPayOrderService) setSign(sign string) *QueryCryptoPayOrderService {
 	srv.Request.Sign = sign
 	return srv
 }
 
+// Execute build and send request(*QueryCryptoPayOrderService) return *QueryCryptoPayOrderResponse
 func (srv *QueryCryptoPayOrderService) Execute() (*QueryCryptoPayOrderResponse, error) {
 
 	url := "QueryCryptoPayOrder"

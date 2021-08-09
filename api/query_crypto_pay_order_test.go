@@ -9,10 +9,10 @@ import (
 )
 
 func TestNewQueryCryptoPayOrderService(t *testing.T) {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewQueryCryptoPayOrderService(merchantId, signKey)
-	assert.Equal(t, merchantId, srv.Request.MerchantId)
+	srv := NewQueryCryptoPayOrderService(merchantID, signKey)
+	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
 }
 
@@ -22,18 +22,18 @@ func TestSetIsProdEnvironmentInQueryCryptoPayOrderService(t *testing.T) {
 	assert.Equal(t, true, srv.IsProdEnvironment)
 }
 
-func TestSetMerchantOrderIdInQueryCryptoPayOrderService(t *testing.T) {
+func TestSetMerchantOrderIDInQueryCryptoPayOrderService(t *testing.T) {
 	srv := dummyQueryCryptoPayOrderService()
-	var dummyMerchantOrderId = "dummyMerchantOrderId"
-	srv.SetMerchantOrderId("dummyMerchantOrderId")
-	assert.Equal(t, dummyMerchantOrderId, srv.Request.MerchantOrderId)
+	var dummyMerchantOrderID = "dummyMerchantOrderID"
+	srv.SetMerchantOrderID("dummyMerchantOrderID")
+	assert.Equal(t, dummyMerchantOrderID, srv.Request.MerchantOrderID)
 }
 
-func TestSetOrderIdInQueryCryptoPayOrderService(t *testing.T) {
+func TestSetOrderIDInQueryCryptoPayOrderService(t *testing.T) {
 	srv := dummyQueryCryptoPayOrderService()
-	var dummyOrderId = "dummyOrderId"
-	srv.SetOrderId("dummyOrderId")
-	assert.Equal(t, dummyOrderId, srv.Request.OrderId)
+	var dummyOrderID = "dummyOrderID"
+	srv.SetOrderID("dummyOrderID")
+	assert.Equal(t, dummyOrderID, srv.Request.OrderID)
 }
 
 func TestSetTimeStampInQueryCryptoPayOrderService(t *testing.T) {
@@ -46,8 +46,8 @@ func TestSetTimeStampInQueryCryptoPayOrderService(t *testing.T) {
 func TestExecuteInQueryCryptoPayOrderService(t *testing.T) {
 	srv := dummyQueryCryptoPayOrderService()
 	srv.SetIsProdEnvironment(false)
-	srv.SetMerchantOrderId("YOZERO_ORDER_000002")
-	srv.SetOrderId("53110728501176672")
+	srv.SetMerchantOrderID("YOZERO_ORDER_000002")
+	srv.SetOrderID("53110728501176672")
 	srv.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
 	rst, err := srv.Execute()
 	if err != nil {
@@ -60,7 +60,7 @@ func TestExecuteInQueryCryptoPayOrderService(t *testing.T) {
 }
 
 func dummyQueryCryptoPayOrderService() *QueryCryptoPayOrderService {
-	merchantId := "DummyMerchantId"
+	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewQueryCryptoPayOrderService(merchantId, signKey)
+	return NewQueryCryptoPayOrderService(merchantID, signKey)
 }
