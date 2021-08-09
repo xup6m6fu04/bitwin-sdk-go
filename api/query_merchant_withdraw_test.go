@@ -63,5 +63,3 @@ func dummyQueryMerchantWithdrawService() *QueryMerchantWithdrawService {
 	signKey := "DummySighKey"
 	return NewQueryMerchantWithdrawService(merchantId, signKey)
 }
-
-

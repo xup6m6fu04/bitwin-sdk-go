@@ -103,5 +103,3 @@ func dummyCreateCryptoPayOrderService() *CreateCryptoPayOrderService {
 	signKey := "DummySighKey"
 	return NewCreateCryptoPayOrderService(merchantId, signKey)
 }
-
-

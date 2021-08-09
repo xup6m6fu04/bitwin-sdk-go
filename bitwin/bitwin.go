@@ -21,12 +21,12 @@ func New(merchantId, signKey string) *Client {
 		SignKey:    signKey,
 	}
 
-	c.CreateCryptoPayOrder  = api.NewCreateCryptoPayOrderService(merchantId, signKey)
-	c.QueryCryptoPayOrder   = api.NewQueryCryptoPayOrderService(merchantId, signKey)
-	c.MerchantWithdraw      = api.NewMerchantWithdrawService(merchantId, signKey)
+	c.CreateCryptoPayOrder = api.NewCreateCryptoPayOrderService(merchantId, signKey)
+	c.QueryCryptoPayOrder = api.NewQueryCryptoPayOrderService(merchantId, signKey)
+	c.MerchantWithdraw = api.NewMerchantWithdrawService(merchantId, signKey)
 	c.QueryMerchantWithdraw = api.NewQueryMerchantWithdrawService(merchantId, signKey)
-	c.ExchangeRate          = api.NewExchangeRateService()
-	c.BuildRelationUser     = api.NewBuildRelationUserService(merchantId, signKey)
+	c.ExchangeRate = api.NewExchangeRateService()
+	c.BuildRelationUser = api.NewBuildRelationUserService(merchantId, signKey)
 
 	return c
 }

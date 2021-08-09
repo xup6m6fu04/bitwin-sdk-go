@@ -64,5 +64,3 @@ func dummyBuildRelationUserService() *BuildRelationUserService {
 	signKey := "DummySighKey"
 	return NewBuildRelationUserService(merchantId, signKey)
 }
-
-

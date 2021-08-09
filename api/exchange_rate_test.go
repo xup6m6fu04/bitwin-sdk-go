@@ -50,5 +50,3 @@ func TestExecuteInExchangeRateService(t *testing.T) {
 func dummyExchangeRateService() *ExchangeRateService {
 	return NewExchangeRateService()
 }
-
-
