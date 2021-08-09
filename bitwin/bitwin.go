@@ -1,6 +1,6 @@
 package bitwin
 
-import "github.com/xup6m6fu04/bitwin-sdk-go/api"
+import "github.com/xup6m6fu04/bitwin-sdk-go/v3/api"
 
 type Client struct {
 	MerchantId string
