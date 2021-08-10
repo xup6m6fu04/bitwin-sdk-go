@@ -42,7 +42,7 @@ func main() {
 ```
 
 ## 範例 ##
-### 建立付款订单
+### 建立付款訂單
 
 ```go
 import (
@@ -91,7 +91,7 @@ CreateCryptoPayOrder Response
 }
 ```
 
-### 查询付款订单
+### 查詢付款訂單
 ```go
 import (
     "github.com/xup6m6fu04/bitwin-sdk-go/v3/bitwin"
@@ -101,7 +101,7 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true 是正式環境, false 是測試環境, 預設為 false
     client.QueryCryptoPayOrder.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID just choose one (or both)
+    // SetMerchantOrderID or SetOrderID 只需要選擇填寫一個，也可以兩者都填
     client.QueryCryptoPayOrder.SetMerchantOrderID("YOZERO_ORDER_0000001")
     client.QueryCryptoPayOrder.SetOrderID("53190266162719072")
     client.QueryCryptoPayOrder.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
@@ -177,7 +177,7 @@ QueryCryptoPayOrder Response
 ```
 關於回調詳情請參閱文件
 
-### 建立商户出款单
+### 建立商戶出款單
 
 ```go
 import (
@@ -222,7 +222,7 @@ MerchantWithdraw Response
     "Sign": "878DCEE083E966D661DD2070B968850D"
 }
 ```
-### 查询商户出款单
+### 查詢商戶出款單
 
 ```go
 import (
@@ -233,7 +233,7 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true 是正式環境, false 是測試環境, 預設為 false
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID just choose one (or both)
+    // SetMerchantOrderID or SetOrderID 只需要選擇填寫一個，也可以兩者都填
     client.QueryMerchantWithdraw.SetMerchantOrderID("YOZERO_ORDER_0000001")
     client.QueryMerchantWithdraw.SetOrderID("53190266162719072")
     client.QueryMerchantWithdraw.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
@@ -309,7 +309,7 @@ QueryMerchantWithdraw Response
 
 關於回調詳情請參閱文件
 
-### 查询建议汇率
+### 查詢建議匯率
 
 ```go
 import (
@@ -347,7 +347,7 @@ ExchangeRate Response
 
 ```
 
-### BITWIN 会员钱包绑定
+### BITWIN 會員錢包綁定
 
 ```go
 import (
