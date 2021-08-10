@@ -101,7 +101,7 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.QueryCryptoPayOrder.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID just choose one (or both)
+    // SetMerchantOrderID or SetOrderID 只需要选择填写一个，也可以两者都填
     client.QueryCryptoPayOrder.SetMerchantOrderID("YOZERO_ORDER_0000001")
     client.QueryCryptoPayOrder.SetOrderID("53190266162719072")
     client.QueryCryptoPayOrder.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
@@ -233,7 +233,7 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID just choose one (or both)
+    // SetMerchantOrderID or SetOrderID 只需要选择填写一个，也可以两者都填
     client.QueryMerchantWithdraw.SetMerchantOrderID("YOZERO_ORDER_0000001")
     client.QueryMerchantWithdraw.SetOrderID("53190266162719072")
     client.QueryMerchantWithdraw.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
