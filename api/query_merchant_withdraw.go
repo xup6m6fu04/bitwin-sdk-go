@@ -91,6 +91,9 @@ func (srv *QueryMerchantWithdrawService) Execute() (*QueryMerchantWithdrawRespon
 
 	// Send Request
 	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	if err != nil {
+		return nil, err
+	}
 	var resp QueryMerchantWithdrawResponse
 	err = json.Unmarshal(body, &resp)
 	if err != nil {

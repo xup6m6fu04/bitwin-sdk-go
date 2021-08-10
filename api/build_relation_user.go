@@ -82,6 +82,9 @@ func (srv *BuildRelationUserService) Execute() (*BuildRelationUserResponse, erro
 
 	// Send Request
 	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	if err != nil {
+		return nil, err
+	}
 	var resp BuildRelationUserResponse
 	err = json.Unmarshal(body, &resp)
 	if err != nil {

@@ -93,6 +93,9 @@ func (srv *QueryCryptoPayOrderService) Execute() (*QueryCryptoPayOrderResponse, 
 
 	// Send Request
 	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	if err != nil {
+		return nil, err
+	}
 	var resp QueryCryptoPayOrderResponse
 	err = json.Unmarshal(body, &resp)
 	if err != nil {

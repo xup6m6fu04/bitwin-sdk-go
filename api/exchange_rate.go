@@ -59,6 +59,9 @@ func (srv *ExchangeRateService) Execute() (*ExchangeRateResponse, error) {
 
 	// Send Request
 	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	if err != nil {
+		return nil, err
+	}
 	var resp ExchangeRateResponse
 	err = json.Unmarshal(body, &resp)
 	if err != nil {

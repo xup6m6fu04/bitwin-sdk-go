@@ -127,6 +127,9 @@ func (srv *CreateCryptoPayOrderService) Execute() (*CreateCryptoPayOrderResponse
 
 	// Send Request
 	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	if err != nil {
+		return nil, err
+	}
 	var resp CreateCryptoPayOrderResponse
 	err = json.Unmarshal(body, &resp)
 	if err != nil {
