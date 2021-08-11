@@ -233,9 +233,9 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true will be production environment, default is false (test environment)
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID just choose one (or both)
-    client.QueryMerchantWithdraw.SetMerchantOrderID("YOZERO_ORDER_0000001")
-    client.QueryMerchantWithdraw.SetOrderID("53190266162719072")
+    // SetMerchantWithdrawID or SetWithdrawID just choose one (or both)
+    client.QueryMerchantWithdraw.SetMerchantWithdrawID("YOZERO_WITHDRAW_0000001")
+    client.QueryMerchantWithdraw.SetWithdrawID("53192080311396704")
     client.QueryMerchantWithdraw.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
     // You can use variable "execute" to check server result
     execute, err := client.QueryMerchantWithdraw.Execute()

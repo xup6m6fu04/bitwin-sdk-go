@@ -233,9 +233,9 @@ func main() {
     client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
-    // SetMerchantOrderID or SetOrderID 只需要选择填写一个，也可以两者都填
-    client.QueryMerchantWithdraw.SetMerchantOrderID("YOZERO_ORDER_0000001")
-    client.QueryMerchantWithdraw.SetOrderID("53190266162719072")
+    // SetMerchantWithdrawID or SetWithdrawID 只需要选择填写一个，也可以两者都填
+	client.QueryMerchantWithdraw.SetMerchantWithdrawID("YOZERO_WITHDRAW_0000001")
+	client.QueryMerchantWithdraw.SetWithdrawID("53192080311396704")
     client.QueryMerchantWithdraw.SetTimeStamp(strconv.Itoa(int(time.Now().Unix())))
     // 可以使用 execute 变数来取得更多资讯
     execute, err := client.QueryMerchantWithdraw.Execute()
