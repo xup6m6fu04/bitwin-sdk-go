@@ -7,6 +7,7 @@
 [![codecov](https://codecov.io/gh/xup6m6fu04/bitwin-sdk-go/branch/master/graph/badge.svg)](https://codecov.io/gh/xup6m6fu04/bitwin-sdk-go)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/xup6m6fu04/bitwin-sdk-go/v3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/xup6m6fu04/bitwin-sdk-go)](https://goreportcard.com/report/github.com/xup6m6fu04/bitwin-sdk-go)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go?ref=badge_shield)
 
 ## Introduction
 The BITWIN SDK for Go makes it easy to develop bots using BITWIN merchant api, and you can create a sample client within minutes.
@@ -432,3 +433,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go?ref=badge_large)
