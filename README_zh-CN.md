@@ -3,7 +3,7 @@
 🌍 *[English](README.md) ∙ [繁體中文](README_zh-TW.md) ∙ [简体中文](README_zh-CN.md)*
 
 [![Build Status](https://travis-ci.com/xup6m6fu04/bitwin-sdk-go.svg?branch=master)](https://travis-ci.com/xup6m6fu04/bitwin-sdk-go)
-[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/xup6m6fu04/bitwin-sdk-go/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fxup6m6fu04%2Fbitwin-sdk-go?ref=badge_shield)
 [![codecov](https://codecov.io/gh/xup6m6fu04/bitwin-sdk-go/branch/master/graph/badge.svg)](https://codecov.io/gh/xup6m6fu04/bitwin-sdk-go)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/xup6m6fu04/bitwin-sdk-go/v3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/xup6m6fu04/bitwin-sdk-go)](https://goreportcard.com/report/github.com/xup6m6fu04/bitwin-sdk-go)
