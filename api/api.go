@@ -21,7 +21,7 @@ const (
 )
 
 // Call server method
-func callServer(request interface{}, IsProdEnvironment bool, url string) ([]byte, error) {
+func callServer(request interface{}, accessKey string, IsProdEnvironment bool, url string) ([]byte, error) {
 	data, err := json.Marshal(request)
 	if err != nil {
 		return nil, err
@@ -35,6 +35,7 @@ func callServer(request interface{}, IsProdEnvironment bool, url string) ([]byte
 		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("X-Bitwin-Access", accessKey)
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {

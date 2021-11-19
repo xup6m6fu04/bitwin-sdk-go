@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     ...
 }
 
@@ -50,7 +50,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.CreateCryptoPayOrder.SetIsProdEnvironment(false)
     client.CreateCryptoPayOrder.SetMerchantUserID("YOZERO_USER_0000001")
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.QueryCryptoPayOrder.SetIsProdEnvironment(false)
     // SetMerchantOrderID or SetOrderID 只需要选择填写一个，也可以两者都填
@@ -185,7 +185,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.MerchantWithdraw.SetIsProdEnvironment(false)
     client.MerchantWithdraw.SetMerchantUserID("YOZERO_USER_0000001")
@@ -230,7 +230,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
     // SetMerchantWithdrawID or SetWithdrawID 只需要选择填写一个，也可以两者都填
@@ -317,7 +317,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.ExchangeRate.SetIsProdEnvironment(false)
     client.ExchangeRate.SetSymbol("USDT_ERC20")
@@ -355,7 +355,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true 是正式环境, false 是测试环境, 预设为 false
     client.BuildRelationUser.SetIsProdEnvironment(false)
     client.BuildRelationUser.SetMerchantUserID("YOZERO_USER_0000001")

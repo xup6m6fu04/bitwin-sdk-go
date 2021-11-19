@@ -6,6 +6,7 @@ import "encoding/json"
 type ExchangeRateService struct {
 	IsProdEnvironment bool
 	SignKey           string
+	AccessKey		  string
 	Request           ExchangeRateRequest
 }
 
@@ -58,7 +59,7 @@ func (srv *ExchangeRateService) Execute() (*ExchangeRateResponse, error) {
 	url := "ExchangeRate"
 
 	// Send Request
-	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	body, err := callServer(srv.Request, srv.AccessKey, srv.IsProdEnvironment, url)
 	if err != nil {
 		return nil, err
 	}

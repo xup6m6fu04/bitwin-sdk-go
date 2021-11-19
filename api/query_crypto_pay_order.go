@@ -8,6 +8,7 @@ import (
 type QueryCryptoPayOrderService struct {
 	IsProdEnvironment bool
 	SignKey           string
+	AccessKey		  string
 	Request           QueryCryptoPayOrderRequest
 }
 
@@ -39,10 +40,11 @@ type QueryCryptoPayOrderResponse struct {
 }
 
 // NewQueryCryptoPayOrderService returns a new service for the given merchant ID and sign key
-func NewQueryCryptoPayOrderService(merchantID string, signKey string) *QueryCryptoPayOrderService {
+func NewQueryCryptoPayOrderService(merchantID string, signKey string, accessKey string) *QueryCryptoPayOrderService {
 	return &QueryCryptoPayOrderService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
+		AccessKey:         accessKey,
 		Request: QueryCryptoPayOrderRequest{
 			MerchantID:      merchantID,
 			MerchantOrderID: "",
@@ -92,7 +94,7 @@ func (srv *QueryCryptoPayOrderService) Execute() (*QueryCryptoPayOrderResponse, 
 	srv.setSign(getSign(srv.Request, srv.SignKey))
 
 	// Send Request
-	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	body, err := callServer(srv.Request, srv.AccessKey, srv.IsProdEnvironment, url)
 	if err != nil {
 		return nil, err
 	}

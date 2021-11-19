@@ -8,7 +8,8 @@ import (
 func TestNew(t *testing.T) {
 	merchantID := "DummyMerchantId"
 	signKey := "DummySighKey"
-	c := New(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	c := New(merchantID, signKey, accessKey)
 	assert.Equal(t, signKey, c.CreateCryptoPayOrder.SignKey)
 	assert.Equal(t, signKey, c.QueryCryptoPayOrder.SignKey)
 	assert.Equal(t, signKey, c.MerchantWithdraw.SignKey)
@@ -20,4 +21,9 @@ func TestNew(t *testing.T) {
 	assert.Equal(t, merchantID, c.MerchantWithdraw.Request.MerchantID)
 	assert.Equal(t, merchantID, c.QueryMerchantWithdraw.Request.MerchantID)
 	assert.Equal(t, merchantID, c.BuildRelationUser.Request.MerchantID)
+	assert.Equal(t, accessKey, c.CreateCryptoPayOrder.AccessKey)
+	assert.Equal(t, accessKey, c.QueryCryptoPayOrder.AccessKey)
+	assert.Equal(t, accessKey, c.MerchantWithdraw.AccessKey)
+	assert.Equal(t, accessKey, c.QueryMerchantWithdraw.AccessKey)
+	assert.Equal(t, accessKey, c.BuildRelationUser.AccessKey)
 }

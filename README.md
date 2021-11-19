@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     ...
 }
 
@@ -50,7 +50,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.CreateCryptoPayOrder.SetIsProdEnvironment(false)
     client.CreateCryptoPayOrder.SetMerchantUserID("YOZERO_USER_0000001")
@@ -98,7 +98,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.QueryCryptoPayOrder.SetIsProdEnvironment(false)
     // SetMerchantOrderID or SetOrderID just choose one (or both)
@@ -185,7 +185,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.MerchantWithdraw.SetIsProdEnvironment(false)
     client.MerchantWithdraw.SetMerchantUserID("YOZERO_USER_0000001")
@@ -230,7 +230,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.QueryMerchantWithdraw.SetIsProdEnvironment(false)
     // SetMerchantWithdrawID or SetWithdrawID just choose one (or both)
@@ -317,7 +317,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.ExchangeRate.SetIsProdEnvironment(false)
     client.ExchangeRate.SetSymbol("USDT_ERC20")
@@ -355,7 +355,7 @@ import (
 )
 
 func main() {
-    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>")
+    client := bitwin.New("<Merchant ID>", "<Merchant Sign key>", "<Access key>")
     // true will be production environment, default is false (test environment)
     client.BuildRelationUser.SetIsProdEnvironment(false)
     client.BuildRelationUser.SetMerchantUserID("YOZERO_USER_0000001")

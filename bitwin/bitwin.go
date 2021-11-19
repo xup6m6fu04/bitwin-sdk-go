@@ -17,18 +17,18 @@ type Client struct {
 }
 
 // New creates client
-func New(merchantID, signKey string) *Client {
+func New(merchantID, signKey string, accessKey string) *Client {
 	c := &Client{
 		MerchantID: merchantID,
 		SignKey:    signKey,
 	}
 
-	c.CreateCryptoPayOrder = api.NewCreateCryptoPayOrderService(merchantID, signKey)
-	c.QueryCryptoPayOrder = api.NewQueryCryptoPayOrderService(merchantID, signKey)
-	c.MerchantWithdraw = api.NewMerchantWithdrawService(merchantID, signKey)
-	c.QueryMerchantWithdraw = api.NewQueryMerchantWithdrawService(merchantID, signKey)
+	c.CreateCryptoPayOrder = api.NewCreateCryptoPayOrderService(merchantID, signKey, accessKey)
+	c.QueryCryptoPayOrder = api.NewQueryCryptoPayOrderService(merchantID, signKey, accessKey)
+	c.MerchantWithdraw = api.NewMerchantWithdrawService(merchantID, signKey, accessKey)
+	c.QueryMerchantWithdraw = api.NewQueryMerchantWithdrawService(merchantID, signKey, accessKey)
 	c.ExchangeRate = api.NewExchangeRateService()
-	c.BuildRelationUser = api.NewBuildRelationUserService(merchantID, signKey)
+	c.BuildRelationUser = api.NewBuildRelationUserService(merchantID, signKey, accessKey)
 
 	return c
 }

@@ -6,6 +6,7 @@ import "encoding/json"
 type MerchantWithdrawService struct {
 	IsProdEnvironment bool
 	SignKey           string
+	AccessKey		  string
 	Request           MerchantWithdrawRequest
 }
 
@@ -33,10 +34,11 @@ type MerchantWithdrawResponse struct {
 }
 
 // NewMerchantWithdrawService returns a new service for the given merchant ID and sign key
-func NewMerchantWithdrawService(merchantID string, signKey string) *MerchantWithdrawService {
+func NewMerchantWithdrawService(merchantID string, signKey string, accessKey string) *MerchantWithdrawService {
 	return &MerchantWithdrawService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
+		AccessKey:         accessKey,
 		Request: MerchantWithdrawRequest{
 			MerchantID:         merchantID,
 			MerchantUserID:     "",
@@ -121,7 +123,7 @@ func (srv *MerchantWithdrawService) Execute() (*MerchantWithdrawResponse, error)
 	srv.setSign(getSign(srv.Request, srv.SignKey))
 
 	// Send Request
-	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	body, err := callServer(srv.Request, srv.AccessKey, srv.IsProdEnvironment, url)
 	if err != nil {
 		return nil, err
 	}

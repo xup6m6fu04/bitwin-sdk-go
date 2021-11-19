@@ -6,6 +6,7 @@ import "encoding/json"
 type BuildRelationUserService struct {
 	IsProdEnvironment bool
 	SignKey           string
+	AccessKey		  string
 	Request           BuildRelationUserRequest
 }
 
@@ -28,10 +29,11 @@ type BuildRelationUserResponse struct {
 }
 
 // NewBuildRelationUserService returns a new service for the given merchant ID and sign key
-func NewBuildRelationUserService(merchantID string, signKey string) *BuildRelationUserService {
+func NewBuildRelationUserService(merchantID string, signKey string, accessKey string) *BuildRelationUserService {
 	return &BuildRelationUserService{
 		IsProdEnvironment: false,
 		SignKey:           signKey,
+		AccessKey:         accessKey,
 		Request: BuildRelationUserRequest{
 			MerchantID:     merchantID,
 			MerchantUserID: "",
@@ -81,7 +83,7 @@ func (srv *BuildRelationUserService) Execute() (*BuildRelationUserResponse, erro
 	srv.setSign(getSign(srv.Request, srv.SignKey))
 
 	// Send Request
-	body, err := callServer(srv.Request, srv.IsProdEnvironment, url)
+	body, err := callServer(srv.Request, srv.AccessKey, srv.IsProdEnvironment, url)
 	if err != nil {
 		return nil, err
 	}
