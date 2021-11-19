@@ -2,7 +2,9 @@ language: go
 go:
   - '1.13'
   - '1.14'
-  - tip
+  - '1.15'
+  - '1.16'
+  - '1.17'
 sudo: false
 
 install:
