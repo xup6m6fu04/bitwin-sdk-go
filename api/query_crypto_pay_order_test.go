@@ -11,9 +11,11 @@ import (
 func TestNewQueryCryptoPayOrderService(t *testing.T) {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewQueryCryptoPayOrderService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	srv := NewQueryCryptoPayOrderService(merchantID, signKey, accessKey)
 	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
+	assert.Equal(t, accessKey, srv.AccessKey)
 }
 
 func TestSetIsProdEnvironmentInQueryCryptoPayOrderService(t *testing.T) {
@@ -62,5 +64,6 @@ func TestExecuteInQueryCryptoPayOrderService(t *testing.T) {
 func dummyQueryCryptoPayOrderService() *QueryCryptoPayOrderService {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewQueryCryptoPayOrderService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	return NewQueryCryptoPayOrderService(merchantID, signKey, accessKey)
 }

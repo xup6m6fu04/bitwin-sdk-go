@@ -11,9 +11,11 @@ import (
 func TestNewBuildRelationUserService(t *testing.T) {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewBuildRelationUserService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	srv := NewBuildRelationUserService(merchantID, signKey, accessKey)
 	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
+	assert.Equal(t, accessKey, srv.AccessKey)
 }
 
 func TestSetIsProdEnvironmentInBuildRelationUserService(t *testing.T) {
@@ -62,5 +64,6 @@ func TestExecuteInBuildRelationUserService(t *testing.T) {
 func dummyBuildRelationUserService() *BuildRelationUserService {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewBuildRelationUserService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	return NewBuildRelationUserService(merchantID, signKey, accessKey)
 }

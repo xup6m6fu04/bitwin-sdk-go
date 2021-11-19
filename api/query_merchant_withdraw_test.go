@@ -11,9 +11,11 @@ import (
 func TestNewQueryMerchantWithdrawService(t *testing.T) {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	srv := NewQueryMerchantWithdrawService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	srv := NewQueryMerchantWithdrawService(merchantID, signKey, accessKey)
 	assert.Equal(t, merchantID, srv.Request.MerchantID)
 	assert.Equal(t, signKey, srv.SignKey)
+	assert.Equal(t, accessKey, srv.AccessKey)
 }
 
 func TestSetIsProdEnvironmentInQueryMerchantWithdrawService(t *testing.T) {
@@ -61,5 +63,6 @@ func TestExecuteInQueryMerchantWithdrawService(t *testing.T) {
 func dummyQueryMerchantWithdrawService() *QueryMerchantWithdrawService {
 	merchantID := "DummyMerchantID"
 	signKey := "DummySighKey"
-	return NewQueryMerchantWithdrawService(merchantID, signKey)
+	accessKey := "DummyAccessKey"
+	return NewQueryMerchantWithdrawService(merchantID, signKey, accessKey)
 }
